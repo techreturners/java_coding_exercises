@@ -24,3 +24,7 @@ hs_err_pid*
 
 target
 .settings
+coding-exercises.iml
+.idea/
+.vscode/launch.json
+.vscode/
