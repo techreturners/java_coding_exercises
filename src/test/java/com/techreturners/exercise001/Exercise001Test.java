@@ -15,6 +15,9 @@ public class Exercise001Test {
         assertEquals("Hello", ex001.capitalizeWord("hello"));
         assertEquals("The quick fox", ex001.capitalizeWord("the quick fox"));
         assertEquals("Oh no, bears!!!", ex001.capitalizeWord("oh no, bears!!!"));
+        assertEquals("",ex001.capitalizeWord(""));
+        assertEquals("!hola", ex001.capitalizeWord("!hola"));
+        assertEquals(null, ex001.capitalizeWord(null));
     }
 
     @Test
@@ -29,6 +32,16 @@ public class Exercise001Test {
         assertEquals("F.B", ex001.generateInitials("Frederic", "Bonneville"));
         assertEquals("K.M", ex001.generateInitials("Karl", "Marx"));
         assertEquals("L.H", ex001.generateInitials("Lewis", "Hamilton"));
+    
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void checkInitialsThrowException(){
+        Exercise001 ex001 = new Exercise001();
+        ex001.generateInitials(null, "Evans");
+        ex001.generateInitials("Evans", null);
+        ex001.generateInitials(null, null);
+
     }
 
     @Test
