@@ -9,40 +9,30 @@ public class Exercise001 {
     private static String LOWER_CASE_REGULAR_EXPRESION= "[a-z]";
     private static String SEPARATOR = ".";
 
-    public String capitalizeWord(String word) {
-        String result = word;
-
-        if(word!=null && word.length()>0){
-            String firstLetter = getFirstLetterInUpperCase(word);
-            result = firstLetter + word.substring(1);
+    public String capitalizeWord(String originialWord) {
+        if(originialWord!=null && originialWord.length()>0){
+            String firstLetter = originialWord.substring(0, 1);
+            if(firstLetter.matches(LOWER_CASE_REGULAR_EXPRESION)){
+                String capitalizedWord = firstLetter.toUpperCase() + originialWord.substring(1);
+                return capitalizedWord;
+            }
+            return originialWord;
         }
-        return result;
+        return originialWord;
     }
 
     public String generateInitials(String firstName, String lastName) {
         if(firstName==null || lastName==null){
             throw new NullPointerException();
         }
-        String firstLetterFromFirstName = getFirstLetterInUpperCase(firstName);
-        String firstLetterFromLastName = getFirstLetterInUpperCase(lastName);
+        String firstLetterFromFirstName = capitalizeWord(firstName).substring(0,1);
+        String firstLetterFromLastName = capitalizeWord(lastName).substring(0,1);
         String separator = SEPARATOR;
 
         return (firstLetterFromFirstName + 
                 separator +
                 firstLetterFromLastName);
         
-    }
-
-    private String getFirstLetterInUpperCase(String word){
-        if(word.length()>0){
-            String firstLetter = word.substring(0, 1);
-            if(firstLetter.matches(LOWER_CASE_REGULAR_EXPRESION)){
-                return firstLetter.toUpperCase();
-            }
-            return firstLetter;
-        }
-        return word;
-
     }
 
     public double addVat(double originalPrice, double vatRate) { 
