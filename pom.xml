@@ -14,12 +14,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<<<<<<< HEAD
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-=======
     <maven.compiler.release>11</maven.compiler.release>
->>>>>>> FromJunit4ToJuniper
   </properties>
 
   <dependencies>
@@ -53,10 +48,6 @@
       <version>2.2</version>
       <scope>test</scope>
     </dependency>
-
-
-
-
   </dependencies>
 
   <build>
@@ -108,8 +99,8 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
               <configuration>
-                  <source>8</source>
-                  <target>8</target>
+                  <source>11</source>
+                  <target>11</target>
               </configuration>
           </plugin>
       </plugins>
