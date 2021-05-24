@@ -24,3 +24,6 @@ hs_err_pid*
 
 target
 .settings
+.idea/
+coding-exercises.iml
+.vscode/
