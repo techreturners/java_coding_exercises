@@ -24,7 +24,12 @@ hs_err_pid*
 
 target
 .settings
+<<<<<<< HEAD
 coding-exercises.iml
 .idea/
 .vscode/launch.json
+=======
+.idea/
+coding-exercises.iml
+>>>>>>> FromJunit4ToJuniper
 .vscode/
