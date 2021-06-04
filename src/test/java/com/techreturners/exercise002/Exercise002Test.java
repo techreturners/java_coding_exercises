@@ -1,30 +1,38 @@
 package com.techreturners.exercise002;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Exercise002Test {
 
-    @Test
-    public void checkIsFromManchester() {
-        Exercise002 ex002 = new Exercise002();
+    private Exercise002 ex002;
 
-        Person p1 = new Person("Peter", "Smith", "Manchester", 23);
-        Person p2 = new Person("Susan", "Farmer", "Leeds", 23);
-
-        assertEquals(true, ex002.isFromManchester(p1));
-        assertEquals(false, ex002.isFromManchester(p2));
+    @BeforeEach
+    void setUp(){
+        ex002 = new Exercise002();
     }
 
-    @Test
-    public void checkCanWatchFilm() {
-        Exercise002 ex002 = new Exercise002();
+    @DisplayName("Check is from Manchester")
+    @ParameterizedTest
+    @CsvSource({"Peter,Smith,Manchester,23,true",
+                "Susan,Farmer,Leeds,23,false"})
+    public void checkIsFromManchester(String firstName, String lastName, String city, int age, boolean result) {
 
-        Person p1 = new Person("Peter", "Smith", "Manchester", 17);
-        Person p2 = new Person("Francis", "Farmer", "Leeds", 18);
+        var p = new Person(firstName, lastName, city, age);
+        assertEquals(result, ex002.isFromManchester(p));
 
-        assertEquals(false, ex002.canWatchFilm(p1, 18));
-        assertEquals(true, ex002.canWatchFilm(p2, 18));
+    }
+
+    @DisplayName("Check can watch the film")
+    @ParameterizedTest
+    @CsvSource({"18,Peter,Smith,Manchester,17,false",
+                "18,Francis,Farmer,Leeds,19,true"})
+    public void checkCanWatchFilm(int ageLimit,String firstName, String lastName, String city, int age, boolean result) {
+        var p = new Person(firstName, lastName, city, age);
+        assertEquals(result, ex002.canWatchFilm(p, ageLimit));
     }
 }

@@ -57,21 +57,6 @@ public class Exercise001 {
                           .count();
     }
 
-    /*
-    Regarding:
-    "Your code would be a
-    bit cleaner if you just used the values
-    in your functions instead", so:"
-
-    Please, Ellie, do you mean to use "Linux" and this way, we won't need
-    the global variable OPERATING_SYSTEM?
-
-    If you mean that, the problem is that if you decided to for example use
-    "linux" in lower case, you need to modify countLinuxUsers
-    Then, having a global variable OPERATING_SYSTEM allows you to modify the code
-    without modify the method.
-
-    * */
     public int countLinuxUsers(List<User> users) {
         Predicate<User> isLinuxUser = u->u.getType().equals("Linux");
         return (int) users.parallelStream()

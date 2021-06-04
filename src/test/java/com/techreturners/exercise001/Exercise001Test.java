@@ -1,84 +1,134 @@
 package com.techreturners.exercise001;
 
-import static org.junit.Assert.assertEquals;
+
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.Assert.assertEquals;
+import  org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.provider.MethodSource;
+
+
 public class Exercise001Test {
 
-    @Test
-    public void checkHello() {
-        Exercise001 ex001 = new Exercise001();
-        assertEquals("Hello", ex001.capitalizeWord("hello"));
-        assertEquals("The quick fox", ex001.capitalizeWord("the quick fox"));
-        assertEquals("Oh no, bears!!!", ex001.capitalizeWord("oh no, bears!!!"));
-        assertEquals("",ex001.capitalizeWord(""));
-        assertEquals("!hola", ex001.capitalizeWord("!hola"));
-        assertEquals(null, ex001.capitalizeWord(null));
-    }
+    private Exercise001 ex001;
 
-    @Test
-    public void checkHelloAlreadyUppercase() {
-        Exercise001 ex001 = new Exercise001();
-        assertEquals("Hello", ex001.capitalizeWord("Hello"));
-    }
-
-    @Test
-    public void checkInitials() {
-        Exercise001 ex001 = new Exercise001();
-        assertEquals("F.B", ex001.generateInitials("Frederic", "Bonneville"));
-        assertEquals("K.M", ex001.generateInitials("Karl", "Marx"));
-        assertEquals("L.H", ex001.generateInitials("Lewis", "Hamilton"));
-    
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void checkInitialsThrowException(){
-        Exercise001 ex001 = new Exercise001();
-        ex001.generateInitials(null, "Evans");
-        ex001.generateInitials("Evans", null);
-        ex001.generateInitials(null, null);
+    @BeforeEach
+    void setUp(){
+        ex001 = new Exercise001();
 
     }
 
-    @Test
-    public void checkAddVat() {
-        Exercise001 ex001 = new Exercise001();
-        assertEquals(120, ex001.addVat(100, 20), 0.0);
-        assertEquals(47, ex001.addVat(40, 17.5), 0.0);
-        assertEquals(39.36, ex001.addVat(33.5, 17.5), 0.0);
-        assertEquals(25, ex001.addVat(25, 0), 0.0);
+    @DisplayName("Given a string in lower for example, the word 'hello', " +
+                 "then, it will capitalize the first letter h to H, and generate the output Hello")
+    @ParameterizedTest
+    @CsvSource({
+                    "Expected, expected",
+                    "Hello, hello",
+                    "The quick fox, the quick fox",
+                    "'Oh no, bears!!!', 'oh no, bears!!!'",
+                    "'',''",
+                    "!hola,!hola",
+                    ","})
+    void checkHello(String expected, String input) {
+        Assertions.assertEquals(expected, ex001.capitalizeWord(input));
     }
 
-    @Test
-    public void checkSentenceReverse() {
-        Exercise001 ex001 = new Exercise001();
-        assertEquals("oof", ex001.reverse("foo"));
-        assertEquals("?siht od ot tnaw neve uoy dluow yhw", ex001.reverse("why would you even want to do this?"));
+
+    @DisplayName("Given a string which its first letter is already upper case, for example 'Hello', " +
+                 "then, the first letter won't be modified and word would be 'Hello'")
+    @ParameterizedTest
+    @CsvSource({
+                    "Hello,Hello",
+                    "'It was upper case', 'It was upper case'"})
+    void checkHelloAlreadyUppercase(String expected, String input) {
+
+        Assertions.assertEquals(expected, ex001.capitalizeWord(input));
     }
 
-    @Test
-    public void checkLinuxUsers() {
-        Exercise001 ex001 = new Exercise001();
-        User u1 = new User("Heather", "Windows 10", "Windows");
-        User u2 = new User("Paul", "Windows 95", "Windows");
-        User u3 = new User("Sheila", "CentOS 7", "Linux");
-        User u4 = new User("Pedro", "Ubuntu 18.04", "Linux");
+    @DisplayName("Given two arguments strings, then, it will get a single string with the first letter ")
+    @ParameterizedTest
+    @CsvSource({
+            "Frederic, Bonneville, F.B",
+            "Karl, Marx, K.M",
+            "Lewis, Hamilton, L.H",
+            "lewis, hamilton, L.H"
+
+    })
+    void checkInitials(String name, String surname, String resultedInitials) {
+        Assertions.assertEquals(resultedInitials, ex001.generateInitials(name, surname));
+
+    }
+
+    @DisplayName("When introducing a null string, then an exception is throw")
+    @ParameterizedTest
+    @CsvSource({
+                ",Evans",
+                "Evans,",
+                ","})
+    void checkInitialsThrowException(String name, String surname){
+        Exception exception = Assertions.assertThrows(NullPointerException.class, ()-> ex001.generateInitials(name,surname));
+    }
 
 
-        List<User> users = new ArrayList<User>();
-        users.add(u1);
-        users.add(u2);
-        assertEquals(0, ex001.countLinuxUsers(users));
+    @DisplayName("Given two numbers type double, being the base price and VAT, " +
+                 "then, it will return a number type double that is the final price")
+    @ParameterizedTest
+    @CsvSource({
+                    "120,100,20,0.0",
+                    "47, 40, 17.5,0.0",
+                    "39.36,33.5,17.5,0.0",
+                    "25,25,0,0.0"
+    })
+    void checkAddVat(double finalPrice, double basePrice, double vat, double delta) {
+        Assertions. assertEquals(finalPrice, ex001.addVat(basePrice,vat),delta);
+    }
 
-        users = new ArrayList<User>();
-        users.add(u1);
-        users.add(u2);
-        users.add(u3);
-        users.add(u4);
-        assertEquals(2, ex001.countLinuxUsers(users));
+
+    @DisplayName("Given a sentence, then, it will reverse it")
+    @ParameterizedTest
+    @CsvSource({
+            "oof,foo",
+            "?siht od ot tnaw neve uoy dluow yhw,why would you even want to do this?"
+    })
+    void checkSentenceReverse(String expected, String input) {
+        Assertions.assertEquals(expected,ex001.reverse(input) );
+    }
+
+    @DisplayName("Given a list of users, it will return how many linux users are in the list")
+    @ParameterizedTest
+    @MethodSource("generateDataCheckLinuxUsers")
+    void testCheckLinuxUsers(List<User> usersList, int numberOfLinuxUsers) {
+
+        assertEquals(numberOfLinuxUsers,ex001.countLinuxUsers(usersList));
+
+
+    }
+
+    static Stream<Arguments> generateDataCheckLinuxUsers() {
+
+        var u1 = new User("Heather", "Windows 10", "Windows");
+        var u2 = new User("Paul", "Windows 95", "Windows");
+        var u3 = new User("Sheila", "CentOS 7", "Linux");
+        var u4 = new User("Pedro", "Ubuntu 18.04", "Linux");
+
+        return Stream.of(
+                Arguments.arguments(Arrays.asList(u1,u2),0),
+                Arguments.arguments (Arrays.asList(u1,u2,u3,u4), 2)
+
+        );
     }
 }
