@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.Assert.assertEquals;
 import  org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -113,9 +112,8 @@ public class Exercise001Test {
     @MethodSource("generateDataCheckLinuxUsers")
     void testCheckLinuxUsers(List<User> usersList, int numberOfLinuxUsers) {
 
-        assertEquals(numberOfLinuxUsers,ex001.countLinuxUsers(usersList));
-
-
+        Assertions.assertEquals(numberOfLinuxUsers,ex001.countLinuxUsers(usersList));
+        
     }
 
     static Stream<Arguments> generateDataCheckLinuxUsers() {
