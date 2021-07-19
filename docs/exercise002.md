@@ -2,6 +2,7 @@
 
 In this set of exercises we're going to explore the creation of your own objects.
 
+### Instructions
 You'll see a number of tests in [Exercise002Test.java](../src/test/java/com/techreturners/exercise002/Exercise002Test.java)
 
 You'll be required to create Java objects (classes) to represent a "Person".
