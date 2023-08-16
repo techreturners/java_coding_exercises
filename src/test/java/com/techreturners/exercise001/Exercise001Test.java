@@ -37,14 +37,14 @@ public class Exercise001Test {
         assertEquals(39.36, ex001.addVat(33.5, 17.5), 0.0);
         assertEquals(25, ex001.addVat(25, 0), 0.0);
     }
-/*
+
     @Test
     public void checkSentenceReverse() {
         Exercise001 ex001 = new Exercise001();
         assertEquals("oof", ex001.reverse("foo"));
         assertEquals("?siht od ot tnaw neve uoy dluow yhw", ex001.reverse("why would you even want to do this?"));
     }
-
+/*
     @Test
     public void checkLinuxUsers() {
         Exercise001 ex001 = new Exercise001();

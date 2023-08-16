@@ -22,8 +22,24 @@ public class Exercise001 {
     }
 
     public String reverse(String sentence) {
-        // Add your code here
-        return "";
+        String words[] = sentence.split(" ");
+        String result = "";
+
+        int wordCount = words.length;
+
+        for (int i=wordCount-1; i>=0; i--) {
+            String reversed = "";
+            String aWord = " " + words[i];  // Add space so that words are
+                                            // separated in result
+
+            for (int j=0; j<aWord.length(); j++) {
+                reversed = aWord.charAt(j) + reversed;
+            }
+            result = result + reversed;
+            System.out.println(i);
+        }
+        result = result.substring(0, result.length()-1); // Strip off final space
+        return result;
     }
 
     public int countLinuxUsers(List<User> users) {
