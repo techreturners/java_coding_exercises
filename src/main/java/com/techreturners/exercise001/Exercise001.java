@@ -1,6 +1,6 @@
 package com.techreturners.exercise001;
 
-import java.util.List;
+import java.util.*;
 
 public class Exercise001 {
     public String capitalizeWord(String word) {
@@ -43,7 +43,19 @@ public class Exercise001 {
     }
 
     public int countLinuxUsers(List<User> users) {
-        // Add your code here
-        return 0;
+
+        int rows=users.size();
+        int linuxCount=0;
+        String linux="Linux";
+
+        for(int i=0; i<rows; i++) {
+            String theType = users.get(i).getType();
+            int countIt = (theType.equals(linux))
+                    ? 1
+                    : 0;
+            linuxCount = linuxCount + countIt;
+        }
+
+        return linuxCount;
     }
 }

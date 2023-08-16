@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.*;
+
 
 public class Exercise001Test {
 
@@ -44,7 +46,7 @@ public class Exercise001Test {
         assertEquals("oof", ex001.reverse("foo"));
         assertEquals("?siht od ot tnaw neve uoy dluow yhw", ex001.reverse("why would you even want to do this?"));
     }
-/*
+
     @Test
     public void checkLinuxUsers() {
         Exercise001 ex001 = new Exercise001();
@@ -66,5 +68,5 @@ public class Exercise001Test {
         users.add(u4);
         assertEquals(2, ex001.countLinuxUsers(users));
     }
-    */
+
 }
