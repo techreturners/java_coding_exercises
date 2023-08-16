@@ -9,8 +9,5 @@
         <module name="coding-exercises" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="coding-exercises" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
