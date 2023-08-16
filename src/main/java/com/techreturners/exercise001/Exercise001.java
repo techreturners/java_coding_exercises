@@ -10,13 +10,15 @@ public class Exercise001 {
     }
 
     public String generateInitials(String firstName, String lastName) {
-        // Add your code here
-        return "";
+        return firstName.charAt(0) + "." + lastName.charAt(0);
     }
 
     public double addVat(double originalPrice, double vatRate) {
         // Add your code here
-        return 0.0;
+        double newPrice = originalPrice * (1.0 + vatRate / 100.0);
+        int    roundedPrice100 = (int)Math.round(newPrice*100);
+        double roundedPrice = roundedPrice100 / 100.0;
+        return roundedPrice;
     }
 
     public String reverse(String sentence) {

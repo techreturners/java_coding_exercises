@@ -14,7 +14,7 @@ public class Exercise001Test {
         assertEquals("The quick fox", ex001.capitalizeWord("the quick fox"));
         assertEquals("Oh no, bears!!!", ex001.capitalizeWord("oh no, bears!!!"));
     }
-    /*
+
     @Test
     public void checkHelloAlreadyUppercase() {
         Exercise001 ex001 = new Exercise001();
@@ -37,7 +37,7 @@ public class Exercise001Test {
         assertEquals(39.36, ex001.addVat(33.5, 17.5), 0.0);
         assertEquals(25, ex001.addVat(25, 0), 0.0);
     }
-
+/*
     @Test
     public void checkSentenceReverse() {
         Exercise001 ex001 = new Exercise001();
