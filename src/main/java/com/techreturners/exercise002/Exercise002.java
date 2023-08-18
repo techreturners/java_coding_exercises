@@ -1,10 +1,11 @@
 package com.techreturners.exercise002;
 
+import java.util.Objects;
+
 public class Exercise002 {
 
-    public boolean isFromManchester(/* Person person */) {
-        // Add your code here
-        return false;
+    public boolean isFromManchester(Person person) {
+        return Objects.equals(person.getCity(), "Manchester");
     }
 
     public boolean canWatchFilm(/* Person person, int ageLimit*/) {
