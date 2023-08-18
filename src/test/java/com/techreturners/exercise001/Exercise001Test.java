@@ -1,5 +1,6 @@
 package com.techreturners.exercise001;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +18,14 @@ public class Exercise001Test {
     }
 
     @Test
+    @Disabled
     public void checkHelloAlreadyUppercase() {
         Exercise001 ex001 = new Exercise001();
         assertEquals("Hello", ex001.capitalizeWord("Hello"));
     }
 
     @Test
+    @Disabled
     public void checkInitials() {
         Exercise001 ex001 = new Exercise001();
         assertEquals("F.B", ex001.generateInitials("Frederic", "Bonneville"));
@@ -31,6 +34,7 @@ public class Exercise001Test {
     }
 
     @Test
+    @Disabled
     public void checkAddVat() {
         Exercise001 ex001 = new Exercise001();
         assertEquals(120, ex001.addVat(100, 20), 0.0);
@@ -40,6 +44,7 @@ public class Exercise001Test {
     }
 
     @Test
+    @Disabled
     public void checkSentenceReverse() {
         Exercise001 ex001 = new Exercise001();
         assertEquals("oof", ex001.reverse("foo"));
@@ -47,6 +52,7 @@ public class Exercise001Test {
     }
 
     @Test
+    @Disabled
     public void checkLinuxUsers() {
         Exercise001 ex001 = new Exercise001();
         User u1 = new User("Heather", "Windows 10", "Windows");

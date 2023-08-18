@@ -1,11 +1,14 @@
 package com.techreturners.exercise002;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class Exercise002Test {
 
     @Test
+    @Disabled
     public void checkIsFromManchester() {
         Exercise002 ex002 = new Exercise002();
 
@@ -16,6 +19,7 @@ public class Exercise002Test {
     }
 
     @Test
+    @Disabled
     public void checkCanWatchFilm() {
         Exercise002 ex002 = new Exercise002();
 

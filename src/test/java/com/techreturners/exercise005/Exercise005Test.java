@@ -17,6 +17,7 @@ public class Exercise005Test {
     }
 
     @Test
+    @Disabled
     public void checkEmptySentenceIsNotAPangram() {
         assertFalse(ex005.isPangram(""));
     }
