@@ -22,7 +22,15 @@ public class Exercise001 {
     }
 
     public int countLinuxUsers(List<User> users) {
-        // Add your code here
-        return 0;
+        int count = 0;
+        for (User user : users) {
+            //user.getType();
+
+            if (user.getType().equals("Linux") ) {
+                count++;
+            }
+
+        }
+        return count;
     }
 }
