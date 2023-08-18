@@ -16,5 +16,9 @@ public class Person {
     public String getCity(){
         return this.city;
     }
+    public int getAge(){
+        return this.age;
+    }
+
 
 }

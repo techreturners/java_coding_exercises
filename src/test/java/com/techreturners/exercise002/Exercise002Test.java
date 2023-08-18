@@ -18,14 +18,13 @@ public class Exercise002Test {
     }
 
     @Test
-    @Disabled
     public void checkCanWatchFilm() {
         Exercise002 ex002 = new Exercise002();
 
-        //Person p1 = new Person("Peter", "Smith", "Manchester", 17);
-        //Person p2 = new Person("Francis", "Farmer", "Leeds", 18);
+        Person p1 = new Person("Peter", "Smith", "Manchester", 17);
+        Person p2 = new Person("Francis", "Farmer", "Leeds", 18);
 
-        assertEquals(false, ex002.canWatchFilm(/* p1, 18 */ ));
-        assertEquals(true, ex002.canWatchFilm(/* p2, 18 */ ));
+        assertEquals(false, ex002.canWatchFilm(p1, 18));
+        assertEquals(true, ex002.canWatchFilm(p2, 18));
     }
 }
