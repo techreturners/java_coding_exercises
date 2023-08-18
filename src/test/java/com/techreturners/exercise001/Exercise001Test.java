@@ -32,7 +32,6 @@ public class Exercise001Test {
     }
 
     @Test
-    @Disabled
     public void checkAddVat() {
         Exercise001 ex001 = new Exercise001();
         assertEquals(120, ex001.addVat(100, 20), 0.0);
