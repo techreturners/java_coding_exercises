@@ -44,7 +44,6 @@ public class Exercise003Test {
 
 
     @Test
-    @Disabled
     public void checkPickMultipleIceCreamFlavours() {
 
         String[] expected = { "Pistachio", "Raspberry Ripple", "Vanilla", "Mint Chocolate Chip", "Chocolate", "Mango Sorbet" };
